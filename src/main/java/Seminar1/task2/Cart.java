@@ -1,4 +1,4 @@
-package ru.geekbrains.junior.lesson1.task2;
+package Seminar1.task2;
 
 import java.util.ArrayList;
 import java.util.Collection;

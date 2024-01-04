@@ -1,4 +1,4 @@
-package ru.geekbrains.junior.lesson1.task2;
+package Seminar1.task2;
 
 import java.util.Scanner;
 
@@ -46,7 +46,7 @@ public class Program {
 
     public static void main(String[] args) {
 
-        ru.geekbrains.junior.lesson1.task2.UMarket market = new ru.geekbrains.junior.lesson1.task2.UMarket();
+       UMarket market = new UMarket();
         System.out.println("Добро пожаловать в магазин U-Market");
 
         while (true)
@@ -72,12 +72,12 @@ public class Program {
                     }
                     case 1 -> {
                         System.out.println("Список товаров:");
-                        market.printThings(ru.geekbrains.junior.lesson1.task2.Thing.class);
+                        market.printThings(Thing.class);
                     }
-                    case 2 -> CreateCart(ru.geekbrains.junior.lesson1.task2.Snack.class, market);
-                    case 3 -> CreateCart(ru.geekbrains.junior.lesson1.task2.SemiFinishedFood.class, market);
-                    case 4 -> CreateCart(ru.geekbrains.junior.lesson1.task2.HealthyFood.class, market);
-                    case 5 -> CreateCart(ru.geekbrains.junior.lesson1.task2.Food.class, market);
+                    case 2 -> CreateCart(Snack.class, market);
+                    case 3 -> CreateCart(SemiFinishedFood.class, market);
+                    case 4 -> CreateCart(HealthyFood.class, market);
+                    case 5 -> CreateCart(Food.class, market);
                 }
 
             }
@@ -90,9 +90,9 @@ public class Program {
 
     }
 
-    static <T extends ru.geekbrains.junior.lesson1.task2.Food> void CreateCart(Class<T> clazz, ru.geekbrains.junior.lesson1.task2.UMarket market)
+    static <T extends Food> void CreateCart(Class<T> clazz,UMarket market)
     {
-        ru.geekbrains.junior.lesson1.task2.Cart<T> cart = new ru.geekbrains.junior.lesson1.task2.Cart<>(clazz, market);
+      Cart<T> cart = new Cart<>(clazz, market);
         while (true)
         {
             System.out.println("Список доступных товаров:");
