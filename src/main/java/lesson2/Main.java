@@ -15,9 +15,11 @@ public class Main {
         System.out.println(constructors);
 
         Object gaz = constructors[0].newInstance("ГАЗ");
+
+
         System.out.println(gaz);
 
-        Field[] fields = gaz.getClass().getFields();
+       Field[] fields = gaz.getClass().getFields();
         int temp = fields[fields.length - 1].getInt(gaz);
         fields[fields.length - 1].setInt(gaz, temp * 2);
 

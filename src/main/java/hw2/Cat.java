@@ -1,6 +1,6 @@
 package hw2;
 
-public class Cat extends Animal{
+public class Cat extends Animal {
     String color;
 
     public Cat(String name, int age, String color) {
@@ -19,7 +19,7 @@ public class Cat extends Animal{
 
     @Override
     public String makeSound() {
-        return "Meow! Meow!";
+        return name + " " + "Meow! Meow!";
     }
 
     public void purr() {

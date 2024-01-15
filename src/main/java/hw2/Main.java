@@ -1,35 +1,60 @@
 package hw2;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
+
+/*Задача 1:
+        Создайте абстрактный класс "Animal" с полями "name" и "age".
+        Реализуйте два класса-наследника от "Animal" (например, "Dog" и "Cat") с уникальными полями и методами.
+        Создайте массив объектов типа "Animal" и с использованием Reflection API выполните следующие действия:
+        Выведите на экран информацию о каждом объекте.
+        Вызовите метод "makeSound()" у каждого объекта, если такой метод присутствует.*/
 public class Main {
-    public static void main(String[] args) {
-        Animal cat1=new Cat("Whiskers", 2, "Tabby");
-        Animal cat2= new Cat("Mittens", 1, "White");
-        Animal dog1=new Dog("Buddy", 3, "Golden Retriever");
-        Animal dog2=new Dog("Max", 5, "German Shepherd");
+    public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException, NoSuchMethodException {
+
+        Class<?> cat = Class.forName("hw2.Cat");
+        Class<?> dog = Class.forName("hw2.Dog");
+        Class<?> animal = Class.forName("hw2.Animal");
 
 
-        List<Animal> animalList=new ArrayList<>();
-        animalList.add(cat1);
-        animalList.add(cat2);
-        animalList.add(dog1);
-        animalList.add(dog2);
+        Constructor constructor1 = cat.getConstructor(String.class,
+                int.class, String.class);
+        Constructor constructor2 = dog.getConstructor(String.class,
+                int.class, String.class);
 
-        System.out.println(animalList);
+        Object cat1 = constructor1.newInstance("Whiskers", 2, "Tabby");
+        Object cat2 = constructor1.newInstance("Mittens", 1, "White");
+        Object dog1 = constructor2.newInstance("Buddy", 3, "Golden Retriever");
+        Object dog2 = constructor2.newInstance("Max", 5, "German Shepherd");
 
-        for (Animal animals:
-             animalList) {
-            System.out.println(animals.name+" " +animals.makeSound());
+
+        Object[] animalsList = new Object[4];
+
+        animalsList[0] = cat1;
+        animalsList[1] = cat2;
+        animalsList[2] = dog1;
+        animalsList[3] = dog2;
+        System.out.println(Arrays.toString(animalsList));
+
+
+        Method displayInfoMethod = animal.getDeclaredMethod("makeSound");
+
+        for (int i = 0; i < animalsList.length; i++) {
+            System.out.println(displayInfoMethod.invoke(animalsList[i]));
         }
-
-
-
-
-
     }
 }
+
+
+
+
+
+
+
 
 
 

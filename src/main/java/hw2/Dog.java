@@ -1,6 +1,6 @@
 package hw2;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
     String breed;
 
     public Dog(String name, int age, String breed) {
@@ -11,12 +11,21 @@ public class Dog extends Animal{
 
     @Override
     public String makeSound() {
-        return "Woof! Woof!";
+        return name + " " + "Woof! Woof!";
     }
 
-    public void wagtail(){
+
+    public void wagtail() {
         System.out.println(name + "is wagging its tail.");
     }
 
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "breed='" + breed + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
+}
 
